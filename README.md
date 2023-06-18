@@ -38,7 +38,7 @@ ShoeCommerce is an online commerce web application built using Next.js 13, TypeS
 
 3. Configure Cosmic CMS:
 
-   - Create an account on Cosmic CMS (https://www.cosmicjs.com/).
+   - Create an account on Cosmic CMS (<https://www.cosmicjs.com/>).
    - Create a new Bucket and define your content models for shoes, orders, etc.
    - Obtain your Cosmic CMS API keys.
 
@@ -80,12 +80,12 @@ To deploy the ShoeCommerce web app to a production environment, follow these ste
 
 The folder structure of the ShoeCommerce web app is organized as follows:
 
-```
+```bash
 ├── components        # Reusable React components
-├── app               # Next.js pages
+├── app               # Next.js app directory
 ├── hooks             # Custom hooks
 ├── lib               # Library functions used in the project
-├── store             # Redux store configuration and actions
+├── store             # Redux store configuration and slices
 ├── utils             # Utility functions
 └── ...
 ```
