@@ -6,17 +6,6 @@ export const getDiscountedPricePercentage = (originalPrice: number, discountedPr
   return discountPercentage.toFixed(0)
 }
 
-export const convertKebabToNormal = (kebabCaseString: string) => {
-  const words = kebabCaseString.split('-')
-
-  // Capitalize the first letter of each word and join them with a space
-  const normalSpacedString = words
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ')
-
-  return normalSpacedString
-}
-
 export const showNotification = (message: string) => {
   toast.success(message, {
     position: 'bottom-right',
