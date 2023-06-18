@@ -83,6 +83,7 @@ const Header = () => {
           showCatMenu={showCatMenu}
           toggleCatMenu={toggleCatMenu}
           categories={categories}
+          areCategoriesLoading={isLoading}
         />
         <div className="flex items-center justify-center gap-8">
           <div className="navbar-icon-wrapper">
