@@ -63,28 +63,26 @@ export async function getAllCategories(props: string[]): Promise<Category[]> {
   return Promise.resolve([])
 }
 
-// Retrieve products belonging to a specific category from the CosmicJS bucket
-export async function getCategoryProducts(
-  props: string[],
-  categoryName: string
-): Promise<Product[]> {
+// Retrieve a specific category info from the CosmicJS bucket
+export async function getCategoryInfo(props: string[], categoryName: string): Promise<Category> {
   try {
     const data: any = await Promise.resolve(
       cosmic.objects
-        .find({
-          type: 'products',
-          'metadata.categories.slug': {
-            $in: categoryName,
-          },
+        .findOne({
+          type: 'categories',
+          slug: categoryName,
         })
         .props(props)
+        .depth(3)
     )
-    const products: Product[] = await data.objects
-    return Promise.resolve(products)
+
+    const category: Category = await data.object
+
+    return Promise.resolve(category)
   } catch (error) {
     console.log('GCP', error)
   }
-  return Promise.resolve([])
+  return Promise.resolve({} as Category)
 }
 
 // Retrieve a single product from the CosmicJS bucket based on its slug
