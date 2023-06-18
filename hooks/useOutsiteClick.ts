@@ -9,10 +9,16 @@ export const useOutsideClick = (ref: React.RefObject<HTMLElement>, callback: () 
     }
 
     const handleOutsideClick = (event: MouseEvent) => handleClick(event)
-    document.addEventListener('mousedown', handleOutsideClick)
+
+    // Adding the listener one larger screen sizes
+    if (window.innerWidth > 767) {
+      document.addEventListener('mousedown', handleOutsideClick)
+    }
 
     return () => {
-      document.removeEventListener('mousedown', handleOutsideClick)
+      if (window.innerWidth > 767) {
+        document.removeEventListener('mousedown', handleOutsideClick)
+      }
     }
   }, [ref, callback])
 }

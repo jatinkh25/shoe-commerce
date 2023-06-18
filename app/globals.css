@@ -90,6 +90,11 @@
     border: 0;
     padding: 0;
   }
+
+  .carousel .thumbs-wrapper .thumbs {
+    display: flex;
+    justify-content: center;
+  }
 }
 @media screen and (min-width: 768px) {
   .productCarousel.carousel-root .carousel .thumbs {

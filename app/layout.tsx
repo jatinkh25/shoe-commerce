@@ -1,6 +1,9 @@
 import { ComponentWrapper, Footer, Header } from '@/components'
-import './globals.css'
 import { Urbanist } from 'next/font/google'
+import { ToastContainer } from 'react-toastify'
+import Providers from '@/utils/providers'
+import 'react-toastify/dist/ReactToastify.css'
+import './globals.css'
 
 const urbanist = Urbanist({ subsets: ['latin'] })
 
@@ -13,11 +16,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={urbanist.className}>
-        <Header />
-        <ComponentWrapper className="px-5 md:px-10">
-          {children}
-          <Footer />
-        </ComponentWrapper>
+        <Providers>
+          <Header />
+          <ComponentWrapper className="px-5 md:px-10">
+            {children}
+            <Footer />
+          </ComponentWrapper>
+        </Providers>
+        <ToastContainer />
       </body>
     </html>
   )

@@ -1,42 +1,26 @@
 'use client'
 
-import { useState } from 'react'
+import { SizeSelectProps } from '@/utils/types'
 
-const SizeSelect = () => {
-  const [selectedSize, setSelectedSize] = useState()
-
+const SizeSelect = ({ sizes, selectedSize, setSize, showError }: SizeSelectProps) => {
   return (
     <>
-      <div className="grid grid-cols-3 gap-3">
-        <div className="px-4 py-2 text-center border rounded-md cursor-pointer hover:outline hover:outline-1 hover:outline-black">
-          UK 6
-        </div>
-        <div className="px-4 py-2 text-center border rounded-md cursor-pointer hover:outline hover:outline-1 hover:outline-black">
-          UK 6
-        </div>
-        <div className="px-4 py-2 text-center border rounded-md cursor-pointer hover:outline hover:outline-1 hover:outline-black">
-          UK 6
-        </div>
-        <div className="px-4 py-2 text-center border rounded-md cursor-pointer hover:outline hover:outline-1 hover:outline-black">
-          UK 6
-        </div>
-        <div className="px-4 py-2 text-center border rounded-md cursor-pointer hover:outline hover:outline-1 hover:outline-black">
-          UK 6
-        </div>
-        <div className="px-4 py-2 text-center border rounded-md cursor-pointer hover:outline hover:outline-1 hover:outline-black">
-          UK 6
-        </div>
-        <div className="px-4 py-2 text-center border rounded-md cursor-pointer hover:outline hover:outline-1 hover:outline-black">
-          UK 6
-        </div>
-        <div className="px-4 py-2 text-center border rounded-md cursor-pointer hover:outline hover:outline-1 hover:outline-black">
-          UK 6
-        </div>
-        <div className="px-4 py-2 text-center border rounded-md cursor-not-allowed bg-black/[0.1] opacity-50">
-          UK 6
-        </div>
+      <div id="size-grid" className="grid grid-cols-3 gap-3">
+        {sizes.map((item, i) => (
+          <button
+            key={i}
+            className={`border rounded-md text-center py-3 font-medium ${
+              item.enabled
+                ? 'hover:border-black cursor-pointer'
+                : 'cursor-not-allowed bg-black/[0.1] opacity-50'
+            } ${selectedSize === item.size ? 'border-black' : ''}`}
+            onClick={() => setSize(item.size)}
+          >
+            {item.size}
+          </button>
+        ))}
       </div>
-      {selectedSize == null && <p className="text-red-600 pt-1">Size Selection is Required.</p>}
+      <>{showError && <p className="pt-1 text-red-600">Size Selection is Required.</p>}</>
     </>
   )
 }

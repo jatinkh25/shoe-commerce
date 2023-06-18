@@ -2,15 +2,18 @@
 
 import Link from 'next/link'
 import { BsChevronDown } from 'react-icons/bs'
-import { navItemsData, subMenuData } from '@/utils/data'
-import { Fragment, useState } from 'react'
+import { navItemsData } from '@/utils/data'
+import { Fragment } from 'react'
 import { MobileMenuProps } from '@/utils/types'
+import Spinner from './Spinner'
 
 const MenuMobile = ({
   showMobileMenu,
   toggleMobileMenu,
   showCatMenu,
   toggleCatMenu,
+  categories = [],
+  areCategoriesLoading,
 }: MobileMenuProps) => {
   return (
     <ul
@@ -21,38 +24,44 @@ const MenuMobile = ({
       {navItemsData.map((item) => {
         return (
           <Fragment key={item.id}>
-            {item?.subMenu ? (
-              <li
-                className="relative flex flex-col px-5 py-4 border-b cursor-pointer"
-                onClick={toggleCatMenu}
-              >
-                <div className="flex items-center justify-between">
-                  {item.name}
-                  <BsChevronDown size={14} />
-                </div>
-
+            {item.subMenu ? (
+              <>
+                <li
+                  className="relative flex flex-col px-5 py-4 border-b cursor-pointer"
+                  onClick={toggleCatMenu}
+                >
+                  <div className="flex items-center justify-between">
+                    {item.name}
+                    <BsChevronDown size={14} />
+                  </div>
+                </li>
                 {showCatMenu && (
-                  <ul className="bg-black/[0.05] -mx-5 mt-4 -mb-4">
-                    {subMenuData?.map(({ id, name, url, doc_count }) => {
-                      return (
-                        <Link
-                          key={id}
-                          href={url}
-                          onClick={() => {
-                            toggleMobileMenu()
-                            toggleCatMenu()
-                          }}
-                        >
-                          <li className="flex justify-between px-8 py-4 border-t">
-                            {name}
-                            <span className="text-sm opacity-50">{doc_count}</span>
-                          </li>
-                        </Link>
-                      )
-                    })}
-                  </ul>
+                  <div className="bg-black/[0.05] -mx-5">
+                    {areCategoriesLoading ? (
+                      <Spinner />
+                    ) : (
+                      categories?.map(({ id, title, slug, metadata }) => {
+                        return (
+                          <Link
+                            key={id}
+                            href={`/categories/${slug}`}
+                            onClick={() => {
+                              toggleCatMenu()
+                              toggleMobileMenu()
+                            }}
+                            className="flex justify-between px-8 py-4 border-t"
+                          >
+                            {title}
+                            <span className="text-sm opacity-50">
+                              ({metadata?.products.length})
+                            </span>
+                          </Link>
+                        )
+                      })
+                    )}
+                  </div>
                 )}
-              </li>
+              </>
             ) : (
               <li className="px-5 py-4 border-b">
                 <Link href={item?.url || '#'} onClick={toggleMobileMenu}>
