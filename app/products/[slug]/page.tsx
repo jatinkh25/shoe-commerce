@@ -32,7 +32,7 @@ function ProductDetails({ params }: ProductDetailsProps) {
   } = useRelatedProducts(['id', 'title', 'slug', 'thumbnail', 'metadata'], slug)
 
   if (isProductLoading || isRelatedProductsLoading) {
-    return <Spinner />
+    return <Spinner className="min-h-safe-height md:min-h-safe-height-md" />
   }
 
   if (isProductError || isRelatedProductsError) return <Error />
