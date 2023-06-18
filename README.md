@@ -86,7 +86,7 @@ The folder structure of the ShoeCommerce web app is organized as follows:
 ├── hooks             # Custom hooks
 ├── lib               # Library functions used in the project
 ├── store             # Redux store configuration and slices
-├── utils             # Utility functions
+├── utils             # Utility functions, providers, data, constants and types
 └── ...
 ```
 
