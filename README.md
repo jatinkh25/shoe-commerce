@@ -82,11 +82,11 @@ The folder structure of the ShoeCommerce web app is organized as follows:
 
 ```
 ├── components        # Reusable React components
-├── pages             # Next.js pages
-├── api               # API communication and data fetching functions
+├── app               # Next.js pages
+├── hooks             # Custom hooks
+├── lib               # Library functions used in the project
 ├── store             # Redux store configuration and actions
 ├── utils             # Utility functions
-├── styles            # Global styles and CSS modules
 └── ...
 ```
 
