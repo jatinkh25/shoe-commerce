@@ -7,7 +7,6 @@ ShoeCommerce is an online commerce web application built using Next.js 13, TypeS
 ## Features
 
 - Browse and search for shoes
-- Filter shoes by various attributes (e.g., brand, size, color)
 - View detailed product information
 - Add products to the shopping cart
 - Manage the shopping cart (update quantities, remove items)
@@ -15,8 +14,9 @@ ShoeCommerce is an online commerce web application built using Next.js 13, TypeS
 
 ## Technologies Used
 
-- Next.js 13: A React framework for server-side rendering and static site generation.
+- Next.js 13: A React framework for server-side rendering.
 - TypeScript: A typed superset of JavaScript that provides static typing capabilities.
+- TailwindCSS: A utility-first CSS framework for rapidly building modern websites.
 - React-Redux: A state management library for React applications.
 - React-Query: A library for managing and caching server-state in React applications.
 - Cosmic CMS: A headless CMS (Content Management System) for managing content and products.
@@ -86,7 +86,7 @@ The folder structure of the ShoeCommerce web app is organized as follows:
 ├── hooks             # Custom hooks
 ├── lib               # Library functions used in the project
 ├── store             # Redux store configuration and slices
-├── utils             # Utility functions
+├── utils             # Utility functions, providers, data, constants and types
 └── ...
 ```
 
