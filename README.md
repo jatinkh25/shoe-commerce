@@ -2,7 +2,7 @@
 
 ## Overview
 
-ShoeCommerce is an online commerce web application built using Next.js 13, TypeScript, React-Redux, React-Query, and Cosmic CMS. This web app allows users to browse and purchase shoes online. It integrates with Cosmic CMS to manage the content and products displayed on the website.
+ShoeCommerce is an online commerce web application built using Next.js 13, TypeScript, TailwindCSS, React-Redux, React-Query, and Cosmic CMS. This web app allows users to browse and purchase shoes online. It integrates with Cosmic CMS to manage the content and products displayed on the website.
 
 ## Features
 
